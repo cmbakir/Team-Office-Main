@@ -1,0 +1,64 @@
+package day44_maps;
+
+import day43_map.MapMethodDepo;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Map;
+import java.util.Set;
+
+public class C04_ValueUpdate_Cem {
+
+    public static void main(String[] args) {
+        // 10/K sinifindaki ogrencilerin subelerini Z yapin
+
+        // alttaki ilk cozum Cem bakır a ait ama collectionlardan ilerlediğim için çalışmadı
+
+
+/*
+        Map<Integer, String> ogrenciMap = MapMethodDepo.ogrenciMapOlustur();
+
+        System.out.println(ogrenciMap); // {101=Ali-Can-11-H-MF, 102=Veli-Cem-10-K-TM,
+                                        // 103=Ali-Cem-11-K-TM, 104=Ayse-Can-10-H-MF, 105=Sevgi-Cem-11-M-TM,
+                                        // 106=Sevgi-Can-10-K-MF, 107=Esra-Han-11-M-SOZ}
+
+        Collection<String> ogrenciValueCollection = ogrenciMap.values();
+
+        System.out.println(ogrenciValueCollection);
+
+        for (String eachValue : ogrenciValueCollection) {
+            String [] eachValueArr = eachValue.split("-");
+
+            if(eachValueArr[2].equalsIgnoreCase("10") && eachValueArr[3].equalsIgnoreCase("K")) {
+                eachValueArr[4] = "Z";
+            }
+
+        }
+        System.out.println(ogrenciValueCollection);
+
+
+        */
+
+        Map<Integer, String> ogrenciMap = MapMethodDepo.ogrenciMapOlustur();
+
+        Set<Integer> ogrenciKeySet = ogrenciMap.keySet();
+
+        for (Integer eachKey : ogrenciKeySet) {
+            String eachValue = ogrenciMap.get(eachKey);
+
+            String [] eachValuearr = eachValue.split("-");
+
+            if(eachValuearr[2].equalsIgnoreCase("10") && eachValuearr[3].equalsIgnoreCase("K")) {
+                eachValuearr[3]="Z";
+
+                String yeniValue = String.join("-", eachValuearr);
+                ogrenciMap.put(eachKey, yeniValue);
+
+            }
+        }
+
+
+
+    }
+
+}
